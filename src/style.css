@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-canvas: #f6f5fa;
+  --color-surface: #ffffff;
+  --color-ink: #17161f;
+  --color-ink-soft: #6a6878;
+  --color-line: #e7e5ee;
+  --color-line-strong: #cfccdb;
+
+  --color-accent: #6246ea;
+  --color-accent-deep: #4f34d1;
+  --color-accent-tint: #efecfd;
+
+  --color-ok: #17845b;
+  --color-ok-tint: #e5f5ee;
+  --color-burn: #d6364a;
+  --color-burn-tint: #fdebee;
+}
+
+@layer base {
+  html {
+    background: var(--color-canvas);
+  }
+  body {
+    @apply bg-canvas font-sans text-ink antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+/* Never print anything from this app. */
+@media print {
+  body {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
